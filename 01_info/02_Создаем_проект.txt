@@ -1,0 +1,26 @@
+Создаем новый проект
+
+File > New > Project
+
+Создаем пустой внешний контейнер для других приложений.
+Выбираем просто Gradle, остальные галочки снимаем
+Задаем имя проекта task_micro
+Отдельно Gradle я не устанавливал, вероятно сработал
+gradle/wrapper/gradle-wrapper.jar
+
+Сразу создаем или копируем файл README.MD и .gitignore
+
+Если есть вопрос по версии gradle, то для java 17
+я выбираю (заменяю) в файле
+gradle/wrapper/gradle-wrapper.properties
+версию
+distributionUrl=https\://services.gradle.org/distributions/gradle-8.0-bin.zip
+
+Примечание
+Чтобы файл настроек адекватно относился к русскому языку
+я изменяю кодировку файлов .properties
+Для этого я изменил следующую настройку:
+File > Settings > Editor > File Encodings
+Default encoding for properties files:
+Было: Properties Default: ISO-8859-1
+Стало: UTF-8

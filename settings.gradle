@@ -1,0 +1,6 @@
+rootProject.name = 'task_micro'
+
+includeBuild 'eureka_server'
+
+
+
