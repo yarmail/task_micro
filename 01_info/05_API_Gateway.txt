@@ -1,0 +1,73 @@
+Что такое API Gateway
+
+API Gateway является шлюзом, который обрабатывает входящие запросы
+и перекидывает их на нужный микросервис (с логированием, кешированием,
+безопасностью и пр.). Некий маршрутизатор запросов.
+В технологиях Spring это направление называется Spring Cloud Gateway.
+
+Добавим Gateway в проект. Он будет отвечать за переадресацию запросов
+к сервисам
+
+File > New > Module
+Выбираем Spring Initializr
+Name - api_gateway
+Language - Java
+Type - Gradle-Groovy
+Project SDK - SDK 17
+Packaging - Jar
+
+NEXT
+
+Spring Boot 2.7.10
+Оставляем галку на Download pre-build shared indexes for
+JDK and Maven libraries
+
+Выбираем зависимости dependencies:
+Web > Spring Reactive Web
+Позволяет всем запросам выполняться асинхронно
+(полезно для Ангуляр и Реакт, в которых уже встроена возможность
+делать асинхронные запросы)
+
+Spring Cloud Routing > Gateway
+экран, шлюз
+
+Spring Cloud Discovery > Eureka Discovery Client
+чтобы Gateway мог перенаправлять запросы и вызывать микросервисы
+
+FINISH
+
+---
+
+Проверяем файл настроек именно этого проекта
+task_micro\api_gateway\build.gradle
+id 'org.springframework.boot' version '2.7.10'
+
+task_micro\api_gateway\settings.gradle
+rootProject.name = 'api_gateway'
+
+task_micro\api_gateway\gradle\wrapper\gradle-wrapper.properties
+distributionUrl=https\://services.gradle.org/distributions/gradle-8.0-bin.zip
+
+Не забываем добавлять вновь созданные модули в корневой файл проекта
+task_micro\settings.gradle
+где у нас есть запись:
+rootProject.name = 'task_micro'
+Например добавляем туда eureka_client таким образом
+includeBuild 'api_gateway'
+
+---
+
+Заполняем настройки в файле
+task_micro\api_gateway\src\main\resources\application.properties
+server.port=8765
+
+# id (имя) приложения - желательно указывать всегда в микросервисных приложениях
+spring.application.name=api_gateway
+
+# url, куда будет происходить регистрация микросервисов
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka
+
+# для корректной работы api_gateway - определение и перенаправление запросов
+spring.cloud.gateway.discovery.locator.enabled=true
+# независимо от регистра букв указываем название сервисов
+spring.cloud.gateway.discovery.locator.lower-case-service-id=true

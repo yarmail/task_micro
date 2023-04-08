@@ -1,9 +1,9 @@
 <h3> Микросервисы из монолитного Rest сервиса</h3>
 (task_micro from task_back)
 
-Описание: переделываем из проекта
+Описание: из монолитного REST сервиса 
 <b><a href="https://github.com/yarmail/task_back">task_back</a></b>,
-монолитного Rest сервиса набор микросервисов.
+делаем микросервисы.
 
 <details>
 <summary>Примечание: информация о проекте</summary>
