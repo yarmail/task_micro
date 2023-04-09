@@ -1,0 +1,72 @@
+Entity (модели, сущности)
+
+Довольно распространенная практика выносить все сущности
+в отдельный модуль. Это может быть полезным
+для того, чтобы любой сервис в нашем проекте мог к ним
+обращаться.
+
+После создания модуля скопируем из другого проекта туда все сущности
+Из:
+task_back\src\main\java\task\entity
+В:
+task_micro\entity\src\main\java\com\example\entity\model
+
+---
+
+Создаем модуль для сущностей
+
+File > New > Module
+Выбираем Spring Initializr
+Name - entity
+Language - Java
+Type - Gradle-Groovy
+Project SDK - SDK 17
+Packaging - Jar
+
+NEXT
+
+Spring Boot 2.7.10
+Оставляем галку на Download pre-build shared indexes for
+JDK and Maven libraries
+
+Выбираем зависимости dependencies:
+SQL > Spring Data JPA
+Developer Tools > Lombok
+
+FINISH
+
+---
+
+Проверяем файл настроек именно этого проекта
+task_micro\entity\build.gradle
+id 'org.springframework.boot' version '2.7.10'
+
+task_micro\entity\settings.gradle
+rootProject.name = 'entity'
+
+task_micro\entity\gradle\wrapper\gradle-wrapper.properties
+distributionUrl=https\://services.gradle.org/distributions/gradle-8.0-bin.zip
+
+Не забываем добавлять вновь созданные модули в корневой файл проекта
+task_micro\settings.gradle
+где у нас есть запись:
+rootProject.name = 'task_micro'
+Например добавляем туда eureka_client таким образом
+includeBuild 'entity'
+
+---
+
+Настройки в файле application.properties не заполняем
+Мы будем подключать этот модуль через зависимости в другие модули
+вот таким образом:
+Открываем build.gradle того модуля, в который хотим
+подключить сущности и в раздел dependencies добавляем строку:
+
+implementation 'com.example.entity:entity'
+
+Примечание: если у вас проект не локальный, то вы можете
+опубликовать модуль entity как jar файл где-то в репозитории
+Далее в build.gradle добавить путь к этому репозиторию
+(в разделе repositories) и точно также пользоваться
+этими сущностями.
+
