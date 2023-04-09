@@ -1,0 +1,24 @@
+Продолжаем работу на модулем task_client
+
+Переносим (копируем) папки controller,
+service, repo, search из проекта task_back
+в модуль task_client
+
+Обновляем импорты, откуда берутся сущности
+Например Category
+Было:
+import task.entity.Category;
+
+Стало:
+import com.example.entity.model.Category;
+
+---
+
+Соответственно поменяются импорты у всех репозиториев и сервисов
+Например было:
+import task.repo.CategoryRepository;
+
+Стало:
+import com.example.task_client.repo.CategoryRepository;
+
+Удаляем импорты с ошибками, добавляем на их место правильные импорты
