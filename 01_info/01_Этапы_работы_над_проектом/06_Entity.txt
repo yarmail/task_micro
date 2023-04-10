@@ -62,7 +62,7 @@ includeBuild 'entity'
 Открываем build.gradle того модуля, в который хотим
 подключить сущности и в раздел dependencies добавляем строку:
 
-implementation 'task_micro:entity'
+implementation 'com.example:entity'
 
 Примечание: если у вас проект не локальный, то вы можете
 опубликовать модуль entity как jar файл где-то в репозитории

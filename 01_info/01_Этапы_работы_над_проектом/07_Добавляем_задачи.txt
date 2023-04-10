@@ -42,7 +42,7 @@ id 'org.springframework.boot' version '2.7.10'
 
 Также добавляем в build.gradle модели (сущности) из
 модуля entity. В dependencies добавляем строку
-implementation 'task_micro:entity'
+implementation 'com.example:entity'
 
 task_micro\task_client\settings.gradle
 rootProject.name = 'task_client'
@@ -67,5 +67,3 @@ task_micro\task_client\src\main\resources\application-db.properties
 task_micro\task_client\src\main\java\com\example\task_client\TaskClientApplication.java
 добавляем аннотацию (т.к. это у нас клиент)
 @EnableEurekaClient
-
-

@@ -1,5 +1,13 @@
 Продолжаем работу на модулем task_client
 
+Прежде всего добавляем аннотации в файл
+task_micro\task_client\src\main\java\com\example\task_client\TaskClientApplication.java
+@ComponentScan(basePackages = {"com.example.task_micro"})
+@EnableJpaRepositories(basePackages = {"com.example.task_micro.task_client"})
+иначе Спринг не может создать бины и возникает такая ошибка
+"org.springframework.beans.factory.UnsatisfiedDependencyException:
+Error creating bean with name ..."
+
 Переносим (копируем) папки controller,
 service, repo, search из проекта task_back
 в модуль task_client
