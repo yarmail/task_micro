@@ -26,7 +26,11 @@ Spring Cloud Routing > Gateway <br>
 <details>
 <summary>Схема базы данных</summary>
 <img src="/01_info/01_Этапы_работы_над_проектом/db_structure.png">
-</details> <br>
+</details>
+
+Тестирование проекта <br>
+<a href="/01_info/Test/TEST.MD">Выборочное тестирование</a> общей работоспособности <br>
+проекта проводим с помощью программы Postman
 
 <details>
 <summary>Примечание: спасибо</summary>

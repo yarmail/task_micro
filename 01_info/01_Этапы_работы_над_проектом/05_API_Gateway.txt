@@ -10,7 +10,7 @@ API Gateway является шлюзом, который обрабатывае
 
 File > New > Module
 Выбираем Spring Initializr
-Name - api_gateway
+Name - gateway
 Language - Java
 Type - Gradle-Groovy
 Project SDK - SDK 17
@@ -43,7 +43,7 @@ task_micro\api_gateway\build.gradle
 id 'org.springframework.boot' version '2.7.10'
 
 task_micro\api_gateway\settings.gradle
-rootProject.name = 'api_gateway'
+rootProject.name = 'gateway'
 
 task_micro\api_gateway\gradle\wrapper\gradle-wrapper.properties
 distributionUrl=https\://services.gradle.org/distributions/gradle-8.0-bin.zip
@@ -52,8 +52,8 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-8.0-bin.zip
 task_micro\settings.gradle
 где у нас есть запись:
 rootProject.name = 'task_micro'
-Например добавляем туда eureka_client таким образом
-includeBuild 'api_gateway'
+Например добавляем туда gateway таким образом
+includeBuild 'gateway'
 
 ---
 
@@ -62,7 +62,7 @@ task_micro\api_gateway\src\main\resources\application.properties
 server.port=8765
 
 # id (имя) приложения - желательно указывать всегда в микросервисных приложениях
-spring.application.name=api_gateway
+spring.application.name=gateway
 
 # url, куда будет происходить регистрация микросервисов
 eureka.client.service-url.defaultZone=http://localhost:8761/eureka

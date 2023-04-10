@@ -1,9 +1,8 @@
 rootProject.name = 'task_micro'
 
 includeBuild 'eureka_server'
-includeBuild 'api_gateway'
 includeBuild 'entity'
 includeBuild 'task_client'
-
+includeBuild 'gateway'
 
 
