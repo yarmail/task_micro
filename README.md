@@ -24,6 +24,11 @@ Spring Cloud Routing > Gateway <br>
 </details>
 
 <details>
+<summary>Схема базы данных</summary>
+<img src="/01_info/01_Этапы_работы_над_проектом/db_structure.png">
+</details> <br>
+
+<details>
 <summary>Примечание: спасибо</summary>
 Спасибо вам за проявленный интерес к проекту.
 Надеюсь проект дал вам что-то полезное.
