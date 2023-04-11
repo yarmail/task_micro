@@ -1,0 +1,85 @@
+Добавляем задачи - создаем клиента client
+
+Добавляем Задачи - основную рабочую часть проекта task_back
+в виде отдельного микросервиса-клиента
+Соответственно в своих настройках он будет иметь
+составные части как Рест приложения так и eureka-сервиса
+
+Создаем модуль для задач:
+File > New > Module
+Выбираем Spring Initializr
+Name - client
+Language - Java
+Type - Gradle-Groovy
+Project SDK - SDK 17
+Packaging - Jar
+
+NEXT
+
+Spring Boot 2.7.10
+Оставляем галку на Download pre-build shared indexes for
+JDK and Maven libraries
+
+Выбираем зависимости dependencies:
+
+Основные стартеры и зависимости из task_back
+Developer Tools > Lombok
+Web > Spring Web
+SQL > Spring Data JPA, PostgreSQL Driver
+
+Зависимости клиента микросервиса
+Spring Cloud Discovery > Eureka Discovery Client
+
+FINISH
+
+---
+
+Проверяем файлы настроек именно этого проекта
+task_micro\client\build.gradle
+id 'org.springframework.boot' version '2.7.10'
+
+task_micro\client\settings.gradle
+rootProject.name = 'client'
+
+task_micro\client\gradle\wrapper\gradle-wrapper.properties
+distributionUrl=https\://services.gradle.org/distributions/gradle-8.0-bin.zip
+
+Не забываем добавлять вновь созданные модули в корневой файл проекта
+task_micro\settings.gradle
+где у нас есть запись:
+rootProject.name = 'task_micro'
+Например добавляем туда client таким образом
+includeBuild 'client'
+
+---
+
+Заполняем настройки в файлах .properties
+task_micro\client\src\main\resources\application.properties
+task_micro\client\src\main\resources\application-db.properties
+
+В файл
+task_micro\client\src\main\java\com\example\task_client\ClientApplication.java
+добавляем аннотацию (т.к. это у нас клиент)
+@EnableEurekaClient
+
+---
+
+Переносим (копируем) папки entity, controller,
+service, repo, search из проекта task_back
+в модуль client
+
+После этого во всех файлах удаляем старые импорты
+между папками и добавляем новые
+
+---
+
+Если все получилось можно отдельно проверить общуюю
+работоспособность именно самого клиента client
+Для этого запускаем основной файл
+\task_micro\client\src\main\java\com\example\client\ClientApplication.java
+Клиент получает случайный порт, кликаем по порту
+и для браузера отрабатыает тестовый контроллер примерно так:
+
+(см. test_client.png в этой папке)
+
+
